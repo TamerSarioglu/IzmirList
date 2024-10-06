@@ -5,6 +5,7 @@ import com.tamersarioglu.izmirlist.data.service.ServiceRepositoryImpl
 import com.tamersarioglu.izmirlist.domain.ServiceApi
 import com.tamersarioglu.izmirlist.presentation.screens.neighborhoodbazaarplacesscreen.NeighborhoodBazaarPlacesScreenViewModel
 import com.tamersarioglu.izmirlist.presentation.screens.wifiservicelocationlistscreen.WifiServiceLocationListScreenViewModel
+import com.tamersarioglu.izmirlist.presentation.usecases.GetBazaarLocationsUseCase
 import com.tamersarioglu.izmirlist.presentation.usecases.GetWifiServicesUseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -16,13 +17,14 @@ val appModule = module {
     single<ServiceApi> { get<Retrofit>().create(ServiceApi::class.java) }
     single<ServiceRepository> { ServiceRepositoryImpl(get()) }
     factory { GetWifiServicesUseCase(get()) }
+    factory { GetBazaarLocationsUseCase(get()) }
     viewModel { WifiServiceLocationListScreenViewModel(get()) }
-    viewModel { NeighborhoodBazaarPlacesScreenViewModel() }
+    viewModel { NeighborhoodBazaarPlacesScreenViewModel(get()) }
 }
 
 fun provideRetrofit(): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://openapi.izmir.bel.tr/")
+        .baseUrl("https://openapi.izmir.bel.tr/api/ibb/cbs/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 }

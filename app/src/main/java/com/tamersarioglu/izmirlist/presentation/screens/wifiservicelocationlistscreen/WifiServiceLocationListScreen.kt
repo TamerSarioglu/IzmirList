@@ -33,7 +33,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun WifiServiceLocationListScreen(viewModel: WifiServiceLocationListScreenViewModel = getViewModel()) {
 
-    val serviceState by viewModel.wifiServiceList.collectAsState()
+    val wifiServiceState by viewModel.wifiServiceList.collectAsState()
 
     var isLoading by remember { mutableStateOf(true) }
     var searchQuery by remember { mutableStateOf("") }
@@ -50,23 +50,23 @@ fun WifiServiceLocationListScreen(viewModel: WifiServiceLocationListScreenViewMo
             singleLine = true
         )
 
-        when (serviceState) {
+        when (wifiServiceState) {
             is Resource.Loading -> {
                 isLoading = true
             }
             is Resource.Success -> {
                 isLoading = false
-                val services = (serviceState as Resource.Success<List<WifiServicePointData>>).data
+                val services = (wifiServiceState as Resource.Success<List<WifiServicePointData>>).data
 
                 // Filter the services by neighborhood based on the search query
                 val filteredServices = if (searchQuery.isEmpty()) {
                     services
                 } else {
-                    services.filter { it.MAHALLE.contains(searchQuery, ignoreCase = true) }
+                    services.filter { it.mahalle.contains(searchQuery, ignoreCase = true) }
                 }
 
                 // Group services by name (or any other field)
-                val groupedServices = filteredServices.groupBy { it.MAHALLE }
+                val groupedServices = filteredServices.groupBy { it.mahalle }
 
                 LazyColumn {
                     groupedServices.forEach { (name, serviceList) ->
@@ -93,7 +93,7 @@ fun WifiServiceLocationListScreen(viewModel: WifiServiceLocationListScreenViewMo
             is Resource.Error -> {
                 isLoading = false
                 Text(
-                    text = (serviceState as Resource.Error).message,
+                    text = (wifiServiceState as Resource.Error).message,
                     color = Color.Red,
                 )
             }

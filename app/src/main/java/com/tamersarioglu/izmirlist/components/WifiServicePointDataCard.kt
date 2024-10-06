@@ -32,7 +32,7 @@ fun WifiServicePointDataCard(service: WifiServicePointData) {
         elevation = CardDefaults.cardElevation(4.dp),
         shape = RoundedCornerShape(8.dp),
         onClick = {
-            val gmmIntentUri = Uri.parse("geo:0,0?q=${service.ENLEM},${service.BOYLAM}(${service.ADI})")
+            val gmmIntentUri = Uri.parse("geo:0,0?q=${service.enlem},${service.boylam}(${service.adi})")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             context.startActivity(mapIntent)
         }
@@ -43,31 +43,31 @@ fun WifiServicePointDataCard(service: WifiServicePointData) {
                 .padding(16.dp)
         ) {
             Text(
-                text = service.ADI,
+                text = service.adi,
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
             Text(
-                text = "District: ${service.ILCE}",
+                text = "District: ${service.ilce}",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
             Text(
-                text = "Neighborhood: ${service.MAHALLE}",
+                text = "Neighborhood: ${service.mahalle}",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
             Text(
-                text = "Street: ${service.YOL}",
+                text = "Street: ${service.yol}",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(bottom = 4.dp)
             )
 
             Text(
-                text = "Latitude: ${service.ENLEM}, \nLongitude: ${service.BOYLAM}",
+                text = "Latitude: ${service.enlem}, \nLongitude: ${service.boylam}",
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(bottom = 4.dp)
             )

@@ -1,10 +1,23 @@
 package com.tamersarioglu.izmirlist.data.wifiservicepointdata
 
+import com.google.gson.annotations.SerializedName
+
 data class WifiServicePointData(
-    val ILCE: String,
-    val ENLEM: Double,
-    val BOYLAM: Double,
-    val ADI: String,
-    val MAHALLE: String,
-    val YOL: String
+    @SerializedName("ILCE")
+    val ilce: String,
+
+    @SerializedName("ENLEM")
+    val enlem: Double,
+
+    @SerializedName("BOYLAM")
+    val boylam: Double,
+
+    @SerializedName("ADI")
+    val adi: String,
+
+    @SerializedName("MAHALLE")
+    val mahalle: String,
+
+    @SerializedName("YOL")
+    val yol: String
 )
