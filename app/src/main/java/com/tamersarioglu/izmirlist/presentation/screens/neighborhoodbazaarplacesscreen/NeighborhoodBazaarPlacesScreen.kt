@@ -1,0 +1,2 @@
+package com.tamersarioglu.izmirlist.presentation.screens.neighborhoodbazaarplacesscreen
+
