@@ -9,8 +9,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class WifiServiceLocationListScreenViewModel(private val getServicesUseCase: GetWifiServicesUseCase) :
-    ViewModel() {
+class WifiServiceLocationListScreenViewModel(
+    private val getServicesUseCase: GetWifiServicesUseCase) : ViewModel() {
+
     private val _wifiServiceList =
         MutableStateFlow<Resource<List<WifiServicePointData>>>(Resource.Loading)
     val wifiServiceList: StateFlow<Resource<List<WifiServicePointData>>> = _wifiServiceList

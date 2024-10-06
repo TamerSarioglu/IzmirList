@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.tamersarioglu.izmirlist.presentation.screens.NeighborhoodBazaarPlacesScreen
 import com.tamersarioglu.izmirlist.presentation.screens.WifiServiceLocationListScreen
 
 @Composable
@@ -23,8 +24,15 @@ fun ServicesListScreen(navController: NavHostController) {
         "WizmirNET Ücretsiz İnternet Noktaları",
         "Semt Pazar Yerleri"
     )
+
     ServicesListScreenContent(servicesList = servicesList, onItemClick = {
-        navController.navigate(WifiServiceLocationListScreen.ROUTE)
+        when (it) {
+            "WizmirNET Ücretsiz İnternet Noktaları" -> navController.navigate(
+                WifiServiceLocationListScreen.ROUTE
+            )
+
+            "Semt Pazar Yerleri" -> navController.navigate(NeighborhoodBazaarPlacesScreen.ROUTE)
+        }
     })
 }
 

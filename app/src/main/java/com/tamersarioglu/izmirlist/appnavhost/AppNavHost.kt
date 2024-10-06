@@ -4,8 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.tamersarioglu.izmirlist.presentation.screens.NeighborhoodBazaarPlacesScreen
 import com.tamersarioglu.izmirlist.presentation.screens.ServicesListScreen
 import com.tamersarioglu.izmirlist.presentation.screens.WifiServiceLocationListScreen
+import com.tamersarioglu.izmirlist.presentation.screens.neighborhoodbazaarplacesscreen.NeighborhoodBazaarPlacesScreen
 import com.tamersarioglu.izmirlist.presentation.screens.serviceslistscreen.ServicesListScreen
 import com.tamersarioglu.izmirlist.presentation.screens.wifiservicelocationlistscreen.WifiServiceLocationListScreen
 
@@ -20,6 +22,9 @@ fun AppNavHost() {
         }
         composable(WifiServiceLocationListScreen.ROUTE) {
             WifiServiceLocationListScreen()
+        }
+        composable(NeighborhoodBazaarPlacesScreen.ROUTE) {
+            NeighborhoodBazaarPlacesScreen()
         }
     }
 }
